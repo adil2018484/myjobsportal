@@ -62,4 +62,14 @@ router.put("/updatejob/:id/:name/:des/:key/:loc", function (req, res, next) {
     }
   );
 });
+//Delete Operations
+router.delete("/deljob/:id", function (req, res, next) {
+  Job.deleteOne({ name: req.params.id }, function (error, results) {
+    if (error) {
+      return next(error);
+    }
+    // Respond with valid data
+    res.json(results);
+  });
+});
 module.exports = router;
